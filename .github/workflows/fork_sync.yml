@@ -1,0 +1,18 @@
+name: Fork Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 8 * * *
+    # cron表达式,每天16点执行一次，actions任务时区为UTC时区。 
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: tgymnich/fork-sync@v1.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          owner: junegunn
